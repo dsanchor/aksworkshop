@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sample-app-ingress
+spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
+  rules:
+  - host: sampleapp.aksworkshop.azure.d-sancho.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sample-app-service
+            port:
+              number: 80
